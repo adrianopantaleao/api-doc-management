@@ -2,9 +2,13 @@
 
 namespace App\Http\Requests;
 
+use App\Rules\ColumnsAvaliable;
+use App\Http\Requests\BaseRequest;
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Support\Str;
+use Illuminate\Validation\Rule;
 
-class DocumentRequest extends FormRequest
+class DocumentRequest extends BaseRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -12,6 +16,13 @@ class DocumentRequest extends FormRequest
     public function authorize(): bool
     {
         return true;
+    }
+
+    protected function prepareForValidation(): void
+    {
+        $this->merge([
+            'name' => Str::lower($this->name),
+        ]);
     }
 
     /**
@@ -29,6 +40,9 @@ class DocumentRequest extends FormRequest
             ],
             'active' => 'boolean',
             'type_id' => 'required|exists:App\Models\Type,id',
+            'content' => 'array',
+            'content.*.column_id' => ['integer', new ColumnsAvaliable($this->type_id)],
+            'content.*.text' => 'min:5',
         ];
     }
 }

@@ -2,9 +2,12 @@
 
 namespace App\Http\Requests;
 
+use App\Http\Requests\BaseRequest;
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Support\Str;
+use Illuminate\Validation\Rule;
 
-class TypeRequest extends FormRequest
+class TypeRequest extends BaseRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -12,6 +15,13 @@ class TypeRequest extends FormRequest
     public function authorize(): bool
     {
         return true;
+    }
+
+    protected function prepareForValidation(): void
+    {
+        $this->merge([
+            'name' => Str::lower($this->name),
+        ]);
     }
 
     /**

@@ -23,4 +23,5 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 
 Route::resource('columns', ColumnController::class);
 Route::resource('documents', DocumentController::class);
+Route::get('documents/{id}/download', [DocumentController::class, 'download'])->name('download-document');
 Route::resource('types', TypeController::class);
