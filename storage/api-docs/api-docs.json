@@ -1,0 +1,576 @@
+{
+    "openapi": "3.0.0",
+    "info": {
+        "title": "Manage PDF documents",
+        "description": "Simple API for manage PDF files",
+        "version": "1.0.0"
+    },
+    "paths": {
+        "/api/columns/": {
+            "get": {
+                "summary": "List columns",
+                "description": "Returns a list of all colunms registered",
+                "operationId": "list_columns",
+                "responses": {
+                    "200": {
+                        "description": "Showing all Column types"
+                    },
+                    "500": {
+                        "description": "Internal server error"
+                    }
+                }
+            }
+        },
+        "/api/columns": {
+            "post": {
+                "summary": "create a column",
+                "description": "create a column",
+                "operationId": "new_column",
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/ColumnRequest"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Column type created successfully",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/ColumnSchema"
+                                }
+                            }
+                        }
+                    },
+                    "500": {
+                        "description": "server error, try again"
+                    }
+                }
+            }
+        },
+        "/api/columns/{id}": {
+            "get": {
+                "summary": "Get columns",
+                "description": "Returns information about column by id",
+                "operationId": "get_column_by_id",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "id",
+                        "required": true,
+                        "example": "1"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Column type retrieved successfully",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/ColumnSchema"
+                                }
+                            }
+                        }
+                    },
+                    "500": {
+                        "description": "server error, try again"
+                    }
+                }
+            },
+            "put": {
+                "summary": "update a column",
+                "description": "update a column",
+                "operationId": "update_column",
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/ColumnRequest"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Column type updated successfully",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/ColumnSchema"
+                                }
+                            }
+                        }
+                    },
+                    "500": {
+                        "description": "server error, try again"
+                    }
+                }
+            },
+            "delete": {
+                "summary": "delete a column",
+                "description": "delete a column",
+                "operationId": "delete_column",
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/ColumnRequest"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Column type deleted successfully",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/ColumnSchema"
+                                }
+                            }
+                        }
+                    },
+                    "500": {
+                        "description": "server error, try again"
+                    }
+                }
+            }
+        },
+        "/api/documents/": {
+            "get": {
+                "summary": "List documents",
+                "description": "Returns a list of all documents registered",
+                "operationId": "list_documents",
+                "responses": {
+                    "200": {
+                        "description": "Showing all Documents"
+                    },
+                    "500": {
+                        "description": "Internal server error"
+                    }
+                }
+            }
+        },
+        "/api/documents": {
+            "post": {
+                "summary": "create a document",
+                "description": "create a document",
+                "operationId": "new_document",
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/DocumentRequest"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "document created successfully",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/DocumentSchema"
+                                }
+                            }
+                        }
+                    },
+                    "500": {
+                        "description": "server error, try again"
+                    }
+                }
+            }
+        },
+        "/api/documents/{id}": {
+            "get": {
+                "summary": "Get document",
+                "description": "Returns information about document by id",
+                "operationId": "get_document_by_id",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "id",
+                        "required": true,
+                        "example": "1"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "document retrieved successfully",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/DocumentSchema"
+                                }
+                            }
+                        }
+                    },
+                    "500": {
+                        "description": "server error, try again"
+                    }
+                }
+            },
+            "put": {
+                "summary": "update a document",
+                "description": "update a document",
+                "operationId": "update_document",
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/DocumentRequest"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "document updated successfully",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/DocumentSchema"
+                                }
+                            }
+                        }
+                    },
+                    "500": {
+                        "description": "server error, try again"
+                    }
+                }
+            },
+            "delete": {
+                "summary": "delete a document",
+                "description": "delete a document",
+                "operationId": "delete_document",
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/DocumentRequest"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "document deleted successfully",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/DocumentSchema"
+                                }
+                            }
+                        }
+                    },
+                    "500": {
+                        "description": "server error, try again"
+                    }
+                }
+            }
+        },
+        "/api/documents/{id}/download": {
+            "get": {
+                "summary": "Download document",
+                "description": "Returns pdf file for a document",
+                "operationId": "download_document_by_id",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "id",
+                        "required": true,
+                        "example": "1"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "download successfully",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/DocumentSchema"
+                                }
+                            }
+                        }
+                    },
+                    "500": {
+                        "description": "server error, try again"
+                    }
+                }
+            }
+        },
+        "/api/types/": {
+            "get": {
+                "summary": "List types",
+                "description": "Returns a list of all document types registered",
+                "operationId": "list_types",
+                "responses": {
+                    "200": {
+                        "description": "Showing all document types"
+                    },
+                    "500": {
+                        "description": "Internal server error"
+                    }
+                }
+            }
+        },
+        "/api/types": {
+            "post": {
+                "summary": "create a document types",
+                "description": "create a document types",
+                "operationId": "new_Type",
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/TypeRequest"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "document types created successfully",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/TypeSchema"
+                                }
+                            }
+                        }
+                    },
+                    "500": {
+                        "description": "server error, try again"
+                    }
+                }
+            }
+        },
+        "/api/types/{id}": {
+            "get": {
+                "summary": "Get document type",
+                "description": "Returns information about document type by id",
+                "operationId": "get_Type_by_id",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "id",
+                        "required": true,
+                        "example": "1"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "document types retrieved successfully",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/TypeSchema"
+                                }
+                            }
+                        }
+                    },
+                    "500": {
+                        "description": "server error, try again"
+                    }
+                }
+            },
+            "put": {
+                "summary": "update a document types",
+                "description": "update a document types",
+                "operationId": "update_Type",
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/TypeRequest"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "document types updated successfully",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/TypeSchema"
+                                }
+                            }
+                        }
+                    },
+                    "500": {
+                        "description": "server error, try again"
+                    }
+                }
+            },
+            "delete": {
+                "summary": "delete a document types",
+                "description": "delete a document types",
+                "operationId": "delete_Type",
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/TypeRequest"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "document type deleted successfully",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/TypeSchema"
+                                }
+                            }
+                        }
+                    },
+                    "500": {
+                        "description": "server error, try again"
+                    }
+                }
+            }
+        }
+    },
+    "components": {
+        "schemas": {
+            "ColumnRequest": {
+                "properties": {
+                    "id": {
+                        "description": "id",
+                        "type": "integer",
+                        "example": "1",
+                        "nullable": "false"
+                    },
+                    "name": {
+                        "description": "name",
+                        "type": "string",
+                        "example": "string",
+                        "nullable": "false"
+                    },
+                    "type_id": {
+                        "description": "Type id",
+                        "type": "integer",
+                        "example": "1",
+                        "nullable": "false"
+                    }
+                },
+                "type": "object"
+            },
+            "DocumentRequest": {
+                "properties": {
+                    "id": {
+                        "description": "id",
+                        "type": "integer",
+                        "example": "1",
+                        "nullable": "false"
+                    },
+                    "name": {
+                        "description": "name",
+                        "type": "string",
+                        "example": "string",
+                        "nullable": "false"
+                    },
+                    "type_id": {
+                        "description": "Type id",
+                        "type": "integer",
+                        "example": "1",
+                        "nullable": "false"
+                    }
+                },
+                "type": "object"
+            },
+            "TypeRequest": {
+                "properties": {
+                    "id": {
+                        "description": "id",
+                        "type": "integer",
+                        "example": "1",
+                        "nullable": "false"
+                    },
+                    "name": {
+                        "description": "name",
+                        "type": "string",
+                        "example": "string",
+                        "nullable": "false"
+                    }
+                },
+                "type": "object"
+            },
+            "ColumnSchema": {
+                "properties": {
+                    "id": {
+                        "description": "id",
+                        "type": "integer",
+                        "example": "1",
+                        "nullable": "false"
+                    },
+                    "name": {
+                        "description": "name",
+                        "type": "string",
+                        "example": "string",
+                        "nullable": "false"
+                    },
+                    "type_id": {
+                        "description": "Type id",
+                        "type": "integer",
+                        "example": "1",
+                        "nullable": "false"
+                    }
+                },
+                "type": "object"
+            },
+            "DocumentSchema": {
+                "properties": {
+                    "id": {
+                        "description": "id",
+                        "type": "integer",
+                        "example": "1",
+                        "nullable": "false"
+                    },
+                    "name": {
+                        "description": "name",
+                        "type": "string",
+                        "example": "string",
+                        "nullable": "false"
+                    },
+                    "type_id": {
+                        "description": "Type id",
+                        "type": "integer",
+                        "example": "1",
+                        "nullable": "false"
+                    }
+                },
+                "type": "object"
+            },
+            "TypeSchema": {
+                "properties": {
+                    "id": {
+                        "description": "id",
+                        "type": "integer",
+                        "example": "1",
+                        "nullable": "false"
+                    },
+                    "name": {
+                        "description": "name",
+                        "type": "string",
+                        "example": "string",
+                        "nullable": "false"
+                    }
+                },
+                "type": "object"
+            }
+        }
+    }
+}

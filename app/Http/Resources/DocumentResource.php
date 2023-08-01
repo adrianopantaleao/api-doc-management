@@ -5,6 +5,33 @@ namespace App\Http\Resources;
 use Illuminate\Http\Request;
 use Illuminate\Http\Resources\Json\JsonResource;
 
+    /**
+     * @OA\Schema(
+     *    schema="DocumentSchema",
+     *        @OA\Property(
+     *            property="id",
+     *            description="id",
+     *            type="integer",
+     *            nullable="false",
+     *            example="1"
+     *        ),
+     *        @OA\Property(
+     *            property="name",
+     *            description="name",
+     *            type="string",
+     *            nullable="false",
+     *            example="string"
+     *        ),
+     *        @OA\Property(
+     *            property="type_id",
+     *            description="Type id",
+     *            type="integer",
+     *            nullable="false",
+     *            example="1"
+     *        ),
+     *    )
+     * )
+     */
 class DocumentResource extends JsonResource
 {
     /**
