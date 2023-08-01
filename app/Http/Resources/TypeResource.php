@@ -5,6 +5,26 @@ namespace App\Http\Resources;
 use Illuminate\Http\Request;
 use Illuminate\Http\Resources\Json\JsonResource;
 
+    /**
+     * @OA\Schema(
+     *    schema="TypeSchema",
+     *        @OA\Property(
+     *            property="id",
+     *            description="id",
+     *            type="integer",
+     *            nullable="false",
+     *            example="1"
+     *        ),
+     *        @OA\Property(
+     *            property="name",
+     *            description="name",
+     *            type="string",
+     *            nullable="false",
+     *            example="string"
+     *        ),
+     *    )
+     * )
+     */
 class TypeResource extends JsonResource
 {
     /**

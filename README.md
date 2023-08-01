@@ -29,6 +29,8 @@ Libs and packages:
 - Create Documents using the endpoint /api/documents;
 - Download documents using the endpoint /api/documents/{id}/download;
 
+API documentation (swagger) in <b>/api/documentation</b>
+
 ## License
 
 This application is an open-sourced software licensed under the MIT license.
